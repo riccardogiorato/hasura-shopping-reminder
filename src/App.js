@@ -2,7 +2,7 @@ function App() {
   return (
     <div className="App">
       <div class="p-24 flex flex-wrap items-center justify-center">
-        <div class="flex-shrink-0 m-6 relative overflow-hidden bg-blue-500 rounded-lg max-w-xs shadow-lg">
+        <div class="flex-shrink-0 m-6 relative overflow-hidden bg-blue-500 rounded-lg max-w-xs shadow-lg transition duration-200 hover:shadow-2xl">
           <div class="relative pt-10 px-10 flex items-center justify-center">
             <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3"></div>
             <img
@@ -15,30 +15,19 @@ function App() {
             <span class="block opacity-75 -mb-1">Indoor</span>
             <div class="flex justify-between">
               <span class="block font-semibold text-xl">Peace Lily</span>
-              <span class="block bg-white rounded-full text-blue-800 text-xs font-bold px-3 py-2 leading-none flex items-center">
-                $36.00
-              </span>
-              <span class="block bg-white rounded-full text-blue-800 text-xs font-bold px-3 py-2 leading-none flex items-center">
+              <span class="block bg-white rounded-full text-blue-800 text-xs font-bold leading-none flex items-center h-8 w-8 fill-current">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  version="1.1"
-                  height="10"
-                  width="10"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  fill="currentColor"
+                  class="w-6 h-6 mx-auto"
                 >
-                  <defs>
-                    <g id="heart">
-                      <path
-                        d="M0 200 v-200 h200 
-    a100,100 90 0,1 0,200
-    a100,100 90 0,1 -200,0
-    z"
-                      />
-                    </g>
-                  </defs>
-                  <use
-                    class="outline "
-                    fill="red"
-                    transform="rotate(225,150,121)"
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                   />
                 </svg>
               </span>
