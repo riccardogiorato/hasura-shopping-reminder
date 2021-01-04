@@ -1,6 +1,11 @@
 function ProductCard({ name, category, image }) {
+
+  const addToWishlist = () => {
+    alert("name: "+ name)
+  };
+
   return (
-    <div class="flex-shrink-0 m-6 relative overflow-hidden bg-blue-500 rounded-lg max-w-xs shadow-lg transition duration-200 hover:shadow-2xl">
+    <button onClick={addToWishlist} class="flex-shrink-0 m-6 relative bg-white overflow-hidden rounded-lg max-w-xs shadow-lg transition duration-200 hover:shadow-2xl focus:outline-none focus:ring focus:border-green-300">
       <div class="relative pt-10 px-10 flex items-center justify-center">
         <div class="block w-40 h-40">
           <img
@@ -10,11 +15,11 @@ function ProductCard({ name, category, image }) {
           />
         </div>
       </div>
-      <div class="relative text-white px-6 pb-6 mt-6">
-        <span class="block opacity-75 -mb-1 capitalize ">{category}</span>
+      <div class="relative px-6 pb-6 mt-6">
+        <span class="block text-green-800 opacity-75 -mb-1 capitalize text-left">{category}</span>
         <div class="flex justify-between">
           <span class="block font-semibold text-xl capitalize ">{name}</span>
-          <span class="block bg-white rounded-full text-blue-800 text-xs font-bold leading-none flex items-center h-8 w-8 fill-current">
+          <span class="block bg-white rounded-full border border-green-800 text-green-800 text-xs font-bold leading-none flex items-center h-8 w-8 fill-current">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -32,7 +37,7 @@ function ProductCard({ name, category, image }) {
           </span>
         </div>
       </div>
-    </div>
+    </button>
   );
 } //ProductCard
 
