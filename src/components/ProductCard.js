@@ -1,11 +1,13 @@
 function ProductCard({ name, category, image, onAddWishlist }) {
-
   const addToWishlist = () => {
-    onAddWishlist({name: name, category: category})
+    onAddWishlist({ name: name, category: category });
   };
 
   return (
-    <button onClick={addToWishlist} className="flex-shrink-0 m-6 relative bg-white overflow-hidden rounded-lg max-w-xs shadow-lg transition duration-200 hover:shadow-2xl focus:outline-none focus:ring focus:border-green-300">
+    <button
+      onClick={addToWishlist}
+      className="flex-shrink-0 m-6 relative bg-white overflow-hidden rounded-lg max-w-xs shadow-lg transition duration-200 hover:shadow-2xl focus:outline-none focus:ring focus:border-green-300"
+    >
       <div className="relative pt-10 px-10 flex items-center justify-center">
         <div className="block w-40 h-40">
           <img
@@ -16,9 +18,13 @@ function ProductCard({ name, category, image, onAddWishlist }) {
         </div>
       </div>
       <div className="relative px-6 pb-6 mt-6">
-        <span className="block text-green-800 opacity-75 -mb-1 capitalize text-left">{category}</span>
+        <span className="block text-green-800 opacity-75 -mb-1 capitalize text-left">
+          {category}
+        </span>
         <div className="flex justify-between">
-          <span className="block font-semibold text-xl capitalize ">{name}</span>
+          <span className="block font-semibold text-xl capitalize ">
+            {name}
+          </span>
           <span className="block bg-white rounded-full border border-green-800 text-green-800 text-xs font-bold leading-none flex items-center h-8 w-8 fill-current">
             <svg
               xmlns="http://www.w3.org/2000/svg"
