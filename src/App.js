@@ -1,3 +1,4 @@
+import {useEffect, useState} from 'react';
 import ProductCard from "./components/ProductCard";
 
 function AppTitle() {
@@ -9,6 +10,34 @@ function AppTitle() {
 }
 
 function App() {
+  const [userEmail, SetEmail] = useState("");
+  const [userPlant, SetPlant] = useState({name: '', category: ''});
+
+  const [appStep, SetStep] = useState(1);
+
+  const opacityStep = (currentAppStep,desiredStep)=>{
+    if(currentAppStep === desiredStep){
+      return "opacity-100"
+    }
+    return "opacity-20 pointer-events-none"
+  }
+
+  const saveEmail = (evt) => {
+    evt.preventDefault();
+    SetStep(2);
+  };
+
+  const savePlant = (plant) => {
+    SetPlant({name: plant.name, category: plant.category})
+    SetStep(3);
+  }
+
+  useEffect(()=>{
+    if(appStep === 3 ){
+     console.log(userEmail, userPlant)
+    }
+  },[appStep, userEmail, userPlant])
+
   const plants = [
     {
       name: "peace lily",
@@ -45,22 +74,23 @@ function App() {
     <div className="App p-4">
       {AppTitle()}
 
-      <div class="text-center py-4">
-        <h2 class="font-normal text-xl text-grey-800 leading-loose my-3 max-w-xl mx-auto">
+      <div className={"text-center py-4 "+ opacityStep(appStep,1)}>
+        <h2 className="font-normal text-xl text-grey-800 leading-loose my-3 max-w-xl mx-auto">
           1. Leave us your email, will be used only for the demo.
         </h2>
-        <div class="w-full text-center">
-          <form action="#">
-            <div class="max-w-sm mx-auto p-1 pr-0 flex items-center">
+        <div className="w-full text-center">
+          <form onSubmit={saveEmail}>
+            <div className="max-w-sm mx-auto p-1 pr-0 flex items-center">
               <input
                 id="email"
                 type="email"
+                value={userEmail} onChange={(evt)=>{SetEmail(evt.target.value)}}
                 placeholder="yourmail@example.com"
-                class="flex-1 appearance-none rounded shadow p-3 text-grey-dark mr-2 focus:outline-none"
+                className="flex-1 appearance-none rounded shadow p-3 text-grey-dark mr-2 focus:outline-none"
               />
               <button
                 type="submit"
-                class="bg-green-600 text-white text-base font-semibold rounded-md shadow-md hover:bg-green-800 p-3"
+                className="bg-green-600 text-white text-base font-semibold rounded-md shadow-md hover:bg-green-800 p-3"
               >
                 Get notifcation!
               </button>
@@ -69,20 +99,20 @@ function App() {
         </div>
       </div>
 
-      <div class="text-center py-4">
-        <h2 class="font-normal text-xl text-grey-800 leading-loose my-3 max-w-xl mx-auto">
+      <div className={"text-center py-4 " + opacityStep(appStep,2)}>
+        <h2 className="font-normal text-xl text-grey-800 leading-loose my-3 max-w-xl mx-auto">
           2. Add one plant to your virtal cart by clicking on one of them!{" "}
         </h2>
       </div>
 
-      <div class=" py-4 px-16 flex flex-wrap items-center justify-center">
+      <div className={"py-4 px-8 flex flex-wrap items-center justify-center " + opacityStep(appStep,2)}>
         {plants.map((plant) => (
-          <ProductCard {...plant} />
+          <ProductCard {...plant} onAddWishlist={savePlant} key={plant.name} />
         ))}
       </div>
 
-      <div class="text-center py-4">
-        <h2 class="font-normal text-xl text-grey-800 leading-loose my-3 max-w-xl mx-auto">
+      <div className={"text-center py-4 " + opacityStep(appStep,3)}>
+        <h2 className="font-normal text-xl text-grey-800 leading-loose my-3 max-w-xl mx-auto">
           3. After 15 minutes you will get an email with that specifc plant
           name, all triggered by an Hasura event!
         </h2>
