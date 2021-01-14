@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { gql, useMutation } from "@apollo/client";
 import ProductCard from "./components/ProductCard";
 
 function AppTitle() {
@@ -22,11 +23,36 @@ function AppTitle() {
   );
 }
 
+const ADD_WISHLIST = gql`
+  mutation ADD_WISHLIST(
+    $email: String!
+    $plant: String!
+    $suggestion: String!
+  ) {
+    insert_users_wishlist_one(
+      object: { email: $email, plant: $plant, suggestion: $suggestion }
+    ) {
+      email
+      id
+    }
+  }
+`;
+
 function App() {
   const [userEmail, SetEmail] = useState("");
   const [userPlant, SetPlant] = useState({ name: "", category: "" });
-
   const [appStep, SetStep] = useState(1);
+
+  const [addToWishlistMutation, { data: addedWish }] = useMutation(
+    ADD_WISHLIST
+  );
+
+  useEffect(() => {
+    if(addedWish)
+    alert(
+      "Your item has been added to your wishlist check your email in 15 minutes!"
+    );
+  }, [addedWish]);
 
   const opacityStep = (currentAppStep, desiredStep) => {
     if (currentAppStep === desiredStep) {
@@ -47,9 +73,15 @@ function App() {
 
   useEffect(() => {
     if (appStep === 3) {
-      console.log(userEmail, userPlant);
+      addToWishlistMutation({
+        variables: {
+          email: userEmail,
+          plant: userPlant.name,
+          suggestion: userPlant.category,
+        },
+      });
     }
-  }, [appStep, userEmail, userPlant]);
+  }, [appStep, userEmail, userPlant, addToWishlistMutation]);
 
   const plants = [
     {
