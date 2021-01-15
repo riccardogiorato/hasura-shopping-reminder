@@ -29,11 +29,10 @@ const ADD_WISHLIST = gql`
     $plant: String!
     $suggestion: String!
   ) {
-    insert_users_wishlist_one(
-      object: { email: $email, plant: $plant, suggestion: $suggestion }
+    insert_users_wishlist(
+      objects: { email: $email, plant: $plant, suggestion: $suggestion }
     ) {
-      email
-      id
+      affected_rows
     }
   }
 `;
@@ -52,6 +51,8 @@ function App() {
     alert(
       "Your item has been added to your wishlist check your email in 15 minutes!"
     );
+    SetEmail("")
+    SetPlant({ name: "", category: "" })
   }, [addedWish]);
 
   const opacityStep = (currentAppStep, desiredStep) => {
@@ -72,7 +73,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (appStep === 3) {
+    if (appStep === 3 && userEmail !== "") {
       addToWishlistMutation({
         variables: {
           email: userEmail,
@@ -166,7 +167,7 @@ function App() {
 
       <div className={"text-center py-4 " + opacityStep(appStep, 3)}>
         <h3 className="font-normal text-xl text-grey-800 leading-loose my-3 max-w-xl mx-auto">
-          3. After 15 minutes you will get an email with that specifc plant
+          3. In 15 minutes you will get an email with that specifc plant
           name, all triggered by an Hasura event!
         </h3>
       </div>
