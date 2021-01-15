@@ -1,4 +1,4 @@
-module.exports = async (req, res) => {
+module.exports = (req, res) => {
   // this function will be launched from Hasura event
   try {
     const {
