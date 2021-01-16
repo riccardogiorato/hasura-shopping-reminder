@@ -157,7 +157,7 @@ function App() {
 
       <div className={"text-center py-4 " + opacityStep(appStep, 3)}>
         <h3 className="font-normal text-xl text-grey-800 leading-loose my-3 max-w-xl mx-auto">
-          3. In 15 minutes you will get an email with that specifc plant
+          3. In a few minutes you will get an email with that specifc plant
           name, all triggered by an Hasura event!
         </h3>
       </div>
