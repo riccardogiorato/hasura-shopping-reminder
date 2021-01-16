@@ -105,16 +105,6 @@ function App() {
       category: "outdoor",
       image: "./images/type4.png",
     },
-    /*{
-      name: "grassy bush",
-      category: "outdoor",
-      image: "./images/type5.png",
-    },
-    {
-      name: "evergreen",
-      category: "outdoor",
-      image: "./images/type6.png",
-    },*/
   ];
   return (
     <div className="App p-4">

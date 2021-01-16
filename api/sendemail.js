@@ -12,8 +12,8 @@ module.exports = async (req, res) => {
       Messages: [
         {
           From: {
-            Email: "hasura-shopping-reminder@hasura.io",
-            Name: "hasura",
+            Email: "gioratfree@protonmail.com",
+            Name: "future plants",
           },
           To: [
             {
@@ -21,11 +21,16 @@ module.exports = async (req, res) => {
             },
           ],
           Subject: "Greetings from your future plants!",
-          TextPart: "My first Mailjet email",
-          HTMLPart:
-            "<h3>Your wishlisted plant was: " +
+          TextPart:
+            "Your wishlisted plant was: " +
             wishlistUser.plant +
             "We suggest you to buy it for us only " +
+            wishlistUser.suggestion +
+            "!",
+          HTMLPart:
+            "<h1>future plants</h1><br/>Your wishlisted plant was:<b> " +
+            wishlistUser.plant +
+            "</b><br/>We suggest you to buy it for use only " +
             wishlistUser.suggestion +
             "!",
         },
