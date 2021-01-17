@@ -1,4 +1,15 @@
-# Getting Started with Create React App
+# [hasura-shopping-reminder](https://hasura-shopping-reminder.vercel.app)
+
+[![](./cover.png)](https://hasura-shopping-reminder.vercel.app)
+
+## "Your Future Plants reminder" - remind your users to complete their order with Hasura Events!
+
+### You can use Hasura to setup event triggers to call webhooks whenever specific events occur in your DB in less than 2 minutes!
+
+In this tutorial we will discover how to use Hasura Events to store a user preference/wish-list and to send a triggered email from this event. 
+We will also cover the creation the React app connecting to an Hasura.io cloud instance to make it work fully!
+You try the application on your own here: https://hasura-shopping-reminder.vercel.app/
+You can also download all the code of the project here: https://github.com/riccardogiorato/hasura-shopping-reminder
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
